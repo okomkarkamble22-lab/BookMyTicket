@@ -2,22 +2,32 @@ import { useState } from 'react'
 import { ChevronDown, Menu, Search, MapPin, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/', label: 'Home', active: true },
-  { href: '/movies', label: 'Movies', active: false },
-  { href: '/events', label: 'Events', active: false },
-  { href: '/about', label: 'About', active: false },
-  { href: '/bookings', label: 'My Bookings', active: false },
+  { href: '/', label: 'Home' },
+  { href: '/movies', label: 'Movies' },
+  { href: '/events', label: 'Events' },
+  { href: '/about', label: 'About' },
+  { href: '/bookings', label: 'My Bookings' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ currentPath = '/', onNavigate }) {
   const [isOpen, setIsOpen] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
+
+  const handleNavClick = (event, href) => {
+    if (!onNavigate) {
+      return
+    }
+
+    event.preventDefault()
+    onNavigate(href)
+    setIsOpen(false)
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="shrink-0">
+          <a href="/" className="shrink-0" onClick={(event) => handleNavClick(event, '/')}>
             <img
               src="/images/logo.png"
               alt="BookMyTicket"
@@ -34,12 +44,15 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
+                  onClick={(event) => handleNavClick(event, link.href)}
                   className={`text-[15px] font-semibold transition-colors duration-200 relative py-2 ${
-                    link.active ? 'text-[#E11D48]' : 'text-[#1F2937] hover:text-[#E11D48]'
+                    currentPath === link.href
+                      ? 'text-[#E11D48]'
+                      : 'text-[#1F2937] hover:text-[#E11D48]'
                   }`}
                 >
                   {link.label}
-                  {link.active && (
+                  {currentPath === link.href && (
                     <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E11D48] rounded-full" />
                   )}
                 </a>
@@ -118,10 +131,12 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
+                  onClick={(event) => handleNavClick(event, link.href)}
                   className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-colors duration-200 ${
-                    link.active ? 'text-[#E11D48] bg-[#E11D48]/5' : 'text-[#1F2937] hover:bg-gray-50'
+                    currentPath === link.href
+                      ? 'text-[#E11D48] bg-[#E11D48]/5'
+                      : 'text-[#1F2937] hover:bg-gray-50'
                   }`}
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </a>
