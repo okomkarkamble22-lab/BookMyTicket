@@ -17,8 +17,8 @@ export default function Home({ currentPath, onNavigate }) {
     <main className="min-h-screen bg-background">
       <Navbar currentPath={currentPath} onNavigate={onNavigate} />
       <HeroSection />
-      <MovieSlider />
-      <TrendingMovies />
+      <MovieSlider onNavigate={onNavigate} />
+      <TrendingMovies onNavigate={onNavigate} />
       <MovieCategories />
       <GenreSearch />
       <ComingSoon />

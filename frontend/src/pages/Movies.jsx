@@ -11,164 +11,21 @@ import {
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import {
+  formatGenres,
+  formatVotes,
+  getComingSoonMovies,
+  getFeaturedMovie,
+  getGenres,
+  getLanguages,
+  getNowShowingMovies,
+} from '../data/movies'
 
-const featuredMovie = {
-  title: 'Dune: Part Three',
-  rating: 9.1,
-  genre: 'Sci-Fi • Adventure',
-  duration: '2h 46m',
-  language: 'English',
-  votes: '48.2K votes',
-  image:
-    'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1600&q=80',
-  description:
-    "Witness Paul Atreides' final chapter on the grandest screens in Pune with breathtaking visuals, premium sound, and a story built for the big screen.",
-}
-
-const nowShowingMovies = [
-  {
-    id: 1,
-    title: 'Dune: Part Three',
-    rating: 9.1,
-    votes: '48.2K votes',
-    language: 'English',
-    genre: 'Sci-Fi • Adventure',
-    duration: '2h 46m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 2,
-    title: 'Echoes of Tomorrow',
-    rating: 8.8,
-    votes: '31.5K votes',
-    language: 'English',
-    genre: 'Sci-Fi • Drama',
-    duration: '2h 12m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 3,
-    title: 'Midnight Protocol',
-    rating: 8.6,
-    votes: '22.8K votes',
-    language: 'Hindi',
-    genre: 'Action • Thriller',
-    duration: '2h 18m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 4,
-    title: 'Love Beyond Rain',
-    rating: 8.2,
-    votes: '14.9K votes',
-    language: 'Hindi',
-    genre: 'Romance • Drama',
-    duration: '2h 04m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 5,
-    title: 'Shadows of Mumbai',
-    rating: 8.9,
-    votes: '41.3K votes',
-    language: 'Hindi',
-    genre: 'Crime • Thriller',
-    duration: '2h 28m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 6,
-    title: 'Galactic Hearts',
-    rating: 8.1,
-    votes: '11.2K votes',
-    language: 'English',
-    genre: 'Romance • Sci-Fi',
-    duration: '1h 58m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 7,
-    title: 'The Last Kingdom',
-    rating: 8.7,
-    votes: '27.6K votes',
-    language: 'Tamil',
-    genre: 'Action • Epic',
-    duration: '2h 34m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 8,
-    title: 'Silent Waves',
-    rating: 7.9,
-    votes: '9.8K votes',
-    language: 'Telugu',
-    genre: 'Drama • Mystery',
-    duration: '2h 01m',
-    releaseDate: 'Now Showing',
-    poster:
-      'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80',
-  },
-]
-
-const comingSoonMovies = [
-  {
-    id: 101,
-    title: 'Crimson Orbit',
-    genre: 'Sci-Fi • Thriller',
-    releaseDate: '21 Jun',
-    poster:
-      'https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 102,
-    title: 'Monsoon Melody',
-    genre: 'Musical • Romance',
-    releaseDate: '28 Jun',
-    poster:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 103,
-    title: 'The Hidden Crown',
-    genre: 'Fantasy • Adventure',
-    releaseDate: '05 Jul',
-    poster:
-      'https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 104,
-    title: 'Neon Run',
-    genre: 'Action • Crime',
-    releaseDate: '12 Jul',
-    poster:
-      'https://images.unsplash.com/photo-1497032205916-ac775f0649ae?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    id: 105,
-    title: 'Paper Skies',
-    genre: 'Drama • Family',
-    releaseDate: '19 Jul',
-    poster:
-      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=80',
-  },
-]
-
-const languages = ['All Languages', 'English', 'Hindi', 'Tamil', 'Telugu']
-const genres = ['All Genres', 'Action', 'Adventure', 'Crime', 'Drama', 'Epic', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller']
+const featuredMovie = getFeaturedMovie()
+const nowShowingMovies = getNowShowingMovies()
+const comingSoonMovies = getComingSoonMovies()
+const languages = getLanguages()
+const genres = getGenres()
 const sortOptions = ['Popular', 'Rating', 'Newest', 'A-Z']
 
 function FilterSelect({ label, value, onChange, options }) {
@@ -192,55 +49,61 @@ function FilterSelect({ label, value, onChange, options }) {
   )
 }
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, onNavigate }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(225,29,72,0.18)]">
-      <div className="relative aspect-[3/4] overflow-hidden">
-        <img
-          src={movie.poster}
-          alt={`${movie.title} poster`}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-        <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
-          <div className="inline-flex items-center gap-1 rounded-full bg-black/65 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
-            <Star className="h-3.5 w-3.5 fill-[#FACC15] text-[#FACC15]" />
-            {movie.rating}
+      <button
+        type="button"
+        onClick={() => onNavigate(`/movies/${movie.slug}`)}
+        className="contents text-left"
+      >
+        <div className="relative aspect-[3/4] overflow-hidden">
+          <img
+            src={movie.poster}
+            alt={`${movie.title} poster`}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+          <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
+            <div className="inline-flex items-center gap-1 rounded-full bg-black/65 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
+              <Star className="h-3.5 w-3.5 fill-[#FACC15] text-[#FACC15]" />
+              {movie.rating}
+            </div>
+            <div className="inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-[#1F2937]">
+              <Heart className="h-3.5 w-3.5 text-primary" />
+              {formatVotes(movie.votes)}
+            </div>
           </div>
-          <div className="inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-[#1F2937]">
-            <Heart className="h-3.5 w-3.5 text-primary" />
-            {movie.votes}
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 p-4">
-          <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md">
-            <div className="flex items-center justify-between gap-2 text-xs text-white/85">
-              <span>{movie.language}</span>
-              <span>{movie.duration}</span>
+          <div className="absolute inset-x-0 bottom-0 p-4">
+            <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md">
+              <div className="flex items-center justify-between gap-2 text-xs text-white/85">
+                <span>{movie.language}</span>
+                <span>{movie.duration}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex-1 space-y-2">
-          <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-            {movie.title}
-          </h3>
-          <p className="text-sm text-muted-foreground">{movie.language}</p>
-          <p className="text-sm text-muted-foreground">{movie.genre}</p>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock3 className="h-4 w-4 text-primary" />
-            <span>{movie.duration}</span>
+        <div className="flex flex-1 flex-col p-5">
+          <div className="flex-1 space-y-2">
+            <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+              {movie.title}
+            </h3>
+            <p className="text-sm text-muted-foreground">{movie.language}</p>
+            <p className="text-sm text-muted-foreground">{formatGenres(movie)}</p>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Clock3 className="h-4 w-4 text-primary" />
+              <span>{movie.duration}</span>
+            </div>
           </div>
-        </div>
 
-        <button className="mt-5 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#BE123C] hover:shadow-lg hover:shadow-primary/25 focus:outline-none focus:ring-2 focus:ring-primary/30">
-          <Ticket className="h-4 w-4" />
-          Book Tickets
-        </button>
-      </div>
+          <span className="mt-5 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition group-hover:bg-[#BE123C] group-hover:shadow-lg group-hover:shadow-primary/25">
+            <Ticket className="h-4 w-4" />
+            View Details
+          </span>
+        </div>
+      </button>
     </article>
   )
 }
@@ -255,14 +118,13 @@ export default function Movies({ currentPath, onNavigate }) {
     let movies = nowShowingMovies.filter((movie) => {
       const matchesSearch =
         movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        movie.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        formatGenres(movie).toLowerCase().includes(searchTerm.toLowerCase()) ||
         movie.language.toLowerCase().includes(searchTerm.toLowerCase())
 
       const matchesLanguage =
         selectedLanguage === 'All Languages' || movie.language === selectedLanguage
 
-      const matchesGenre =
-        selectedGenre === 'All Genres' || movie.genre.toLowerCase().includes(selectedGenre.toLowerCase())
+      const matchesGenre = selectedGenre === 'All Genres' || movie.genres.includes(selectedGenre)
 
       return matchesSearch && matchesLanguage && matchesGenre
     })
@@ -270,7 +132,9 @@ export default function Movies({ currentPath, onNavigate }) {
     if (selectedSort === 'Rating') {
       movies = [...movies].sort((first, second) => second.rating - first.rating)
     } else if (selectedSort === 'Newest') {
-      movies = [...movies].reverse()
+      movies = [...movies].sort(
+        (first, second) => new Date(second.releaseDate) - new Date(first.releaseDate),
+      )
     } else if (selectedSort === 'A-Z') {
       movies = [...movies].sort((first, second) => first.title.localeCompare(second.title))
     }
@@ -279,13 +143,13 @@ export default function Movies({ currentPath, onNavigate }) {
   }, [searchTerm, selectedLanguage, selectedGenre, selectedSort])
 
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar currentPath={currentPath} onNavigate={onNavigate} />
 
       <section className="relative overflow-hidden bg-[#0F0F0F] pt-20">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${featuredMovie.image})` }}
+          style={{ backgroundImage: `url(${featuredMovie.backdrop})` }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F0F] via-[#0F0F0F]/92 to-[#0F0F0F]/45" />
@@ -310,21 +174,35 @@ export default function Movies({ currentPath, onNavigate }) {
                   <Star className="h-4 w-4 fill-[#FACC15] text-[#FACC15]" />
                   {featuredMovie.rating}/10
                 </span>
-                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">{featuredMovie.genre}</span>
-                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">{featuredMovie.duration}</span>
-                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">{featuredMovie.language}</span>
+                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  {formatGenres(featuredMovie)}
+                </span>
+                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  {featuredMovie.duration}
+                </span>
+                <span className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                  {featuredMovie.language}
+                </span>
               </div>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-gray-300 sm:text-lg">
-                {featuredMovie.description}
+                {featuredMovie.synopsis}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">
+                <button
+                  type="button"
+                  onClick={() => onNavigate(`/movies/${featuredMovie.slug}`)}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
                   <Play className="h-4 w-4 fill-white" />
-                  Watch Trailer
+                  Explore Movie
                 </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#BE123C] hover:shadow-xl hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/bookings')}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#BE123C] hover:shadow-xl hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                >
                   <Ticket className="h-4 w-4" />
                   Book Tickets
                 </button>
@@ -332,7 +210,7 @@ export default function Movies({ currentPath, onNavigate }) {
 
               <div className="mt-8 inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-white/80 backdrop-blur-md">
                 <Heart className="h-4 w-4 text-primary" />
-                Loved by {featuredMovie.votes}
+                Loved by {formatVotes(featuredMovie.votes)}
               </div>
             </div>
 
@@ -340,7 +218,7 @@ export default function Movies({ currentPath, onNavigate }) {
               <div className="overflow-hidden rounded-[32px] border border-white/12 bg-white/8 p-3 shadow-[0_25px_60px_rgba(0,0,0,0.4)] backdrop-blur-md">
                 <div className="relative overflow-hidden rounded-[26px]">
                   <img
-                    src={featuredMovie.image}
+                    src={featuredMovie.poster}
                     alt={`${featuredMovie.title} featured poster`}
                     className="aspect-[3/4] w-full object-cover"
                   />
@@ -349,7 +227,7 @@ export default function Movies({ currentPath, onNavigate }) {
                     <p className="font-[family-name:var(--font-poppins)] text-2xl font-semibold text-white">
                       {featuredMovie.title}
                     </p>
-                    <p className="mt-1 text-sm text-white/80">{featuredMovie.genre}</p>
+                    <p className="mt-1 text-sm text-white/80">{formatGenres(featuredMovie)}</p>
                   </div>
                 </div>
               </div>
@@ -415,7 +293,7 @@ export default function Movies({ currentPath, onNavigate }) {
         {filteredMovies.length > 0 ? (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
             {filteredMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} onNavigate={onNavigate} />
             ))}
           </div>
         ) : (
