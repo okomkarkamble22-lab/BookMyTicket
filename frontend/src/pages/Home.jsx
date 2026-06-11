@@ -12,10 +12,10 @@ import RewardsSection from '../components/RewardsSection'
 import MobileAppSection from '../components/MobileAppSection'
 import Footer from '../components/Footer'
 
-export default function Home() {
+export default function Home({ currentPath, onNavigate }) {
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar currentPath={currentPath} onNavigate={onNavigate} />
       <HeroSection />
       <MovieSlider />
       <TrendingMovies />
