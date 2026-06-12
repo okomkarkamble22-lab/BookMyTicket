@@ -26,14 +26,14 @@ export default function Navbar({ currentPath = '/', onNavigate }) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <a href="/" className="shrink-0" onClick={(event) => handleNavClick(event, '/')}>
             <img
               src="/images/logo.png"
               alt="BookMyTicket"
-              width="200"
-              height="60"
-              className="h-[60px] w-auto object-contain"
+              width="300"
+              height="90"
+              className="h-[90px] w-auto object-contain"
               loading="eager"
             />
           </a>

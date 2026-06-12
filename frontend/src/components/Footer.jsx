@@ -62,9 +62,9 @@ export default function Footer() {
               <img
                 src="/images/logo.png"
                 alt="BookMyTicket - Movies, Events, Experiences"
-                width="180"
-                height="54"
-                className="h-12 w-auto"
+                width="280"
+                height="84"
+                className="h-20 w-auto"
                 loading="eager"
               />
             </a>
