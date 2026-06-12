@@ -1,13 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Play, Users, Calendar, Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-
-const stats = [
-  { value: '10M+', label: 'Happy Customers', icon: Users },
-  { value: '5000+', label: 'Events Annually', icon: Calendar },
-  { value: '500+', label: 'Venues Partner', icon: Award },
-]
 
 const featuredContent = [
   {
@@ -15,6 +9,7 @@ const featuredContent = [
     type: 'Concert',
     title: 'Coldplay World Tour',
     subtitle: 'Live in Pune',
+    movieSlug: 'dune-part-three',
     image: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&q=80',
     description:
       'Experience the magic of Coldplay live as they bring their spectacular world tour to Pune. An unforgettable night of music, lights, and pure euphoria awaits.',
@@ -24,6 +19,7 @@ const featuredContent = [
     type: 'Movie Premiere',
     title: 'Dune: Part Three',
     subtitle: 'IMAX Experience',
+    movieSlug: 'dune-part-three',
     image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=80',
     description:
       "The epic conclusion to the Dune saga. Witness Paul Atreides' final destiny on the grandest IMAX screens across the city.",
@@ -33,6 +29,7 @@ const featuredContent = [
     type: 'Stand-up Comedy',
     title: 'Comedy Night Live',
     subtitle: 'Featuring Top Comics',
+    movieSlug: 'echoes-of-tomorrow',
     image: 'https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=1920&q=80',
     description:
       "India's top comedians come together for one explosive night of laughter. Get ready for an evening that will leave your sides splitting.",
@@ -42,13 +39,14 @@ const featuredContent = [
     type: 'Theatre',
     title: 'The Phantom Returns',
     subtitle: 'Broadway Musical',
+    movieSlug: 'the-last-kingdom',
     image: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=1920&q=80',
     description:
       'The legendary Broadway musical returns to captivate audiences with its timeless story of love, mystery, and music.',
   },
 ]
 
-export default function HeroSection() {
+export default function HeroSection({ onNavigate }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 7000, stopOnInteraction: false }),
   ])
@@ -85,40 +83,46 @@ export default function HeroSection() {
                 }}
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F0F] via-[#0F0F0F]/90 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-[#0F0F0F]/60" />
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#090909] via-[#090909]/86 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-[#090909]/55" />
+              <div className="absolute inset-0 bg-black/15" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(229,9,20,0.18),transparent_32%),radial-gradient(circle_at_right,rgba(6,182,212,0.14),transparent_28%)]" />
 
               <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
                 <div className="max-w-2xl pt-24 lg:pt-28">
-                  <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-primary/20 border border-primary/40 mb-8 backdrop-blur-sm">
-                    <span className="relative flex h-3 w-3">
+                  <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 mb-7 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+                    <span className="relative flex h-3.5 w-3.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-primary" />
                     </span>
-                    <span className="text-sm font-semibold text-white uppercase tracking-widest">
+                    <span className="text-xs sm:text-sm font-semibold text-white uppercase tracking-[0.28em]">
                       Live Entertainment
                     </span>
                   </div>
 
-                  <h1 className="font-[family-name:var(--font-poppins)] font-black text-5xl sm:text-6xl lg:text-8xl text-white mb-3 leading-[0.95] tracking-tight">
+                  <h1 className="max-w-3xl font-[family-name:var(--font-poppins)] font-black text-4xl sm:text-5xl lg:text-[4.8rem] text-white mb-4 leading-[0.92] tracking-[-0.04em] text-balance">
                     {item.title}
                   </h1>
 
-                  <p className="font-[family-name:var(--font-poppins)] text-2xl sm:text-3xl lg:text-4xl text-primary font-semibold mb-6">
+                  <p className="font-[family-name:var(--font-poppins)] text-2xl sm:text-3xl lg:text-[2.6rem] text-primary font-semibold mb-6 tracking-tight">
                     {item.subtitle}
                   </p>
 
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-white/10 border border-white/20 mb-6">
-                    <span className="text-sm font-medium text-gray-300">{item.type}</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 mb-6 backdrop-blur-md">
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    <span className="text-sm font-medium text-gray-200">{item.type}</span>
                   </div>
 
-                  <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed">
+                  <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
                     {item.description}
                   </p>
 
                   <div className="flex flex-wrap items-center gap-5">
-                    <button className="group flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary to-[#BE123C] text-white font-[family-name:var(--font-poppins)] font-bold text-lg rounded-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/50 hover:scale-105 hover:-translate-y-1">
+                    <button
+                      type="button"
+                      onClick={() => onNavigate?.(`/movies/${item.movieSlug}`)}
+                      className="group flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary to-[#BE123C] text-white font-[family-name:var(--font-poppins)] font-bold text-lg rounded-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/45 hover:scale-[1.03] hover:-translate-y-1"
+                    >
                       Book Tickets Now
                       <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
                         →
@@ -131,21 +135,6 @@ export default function HeroSection() {
                     </button>
                   </div>
 
-                  <div className="hidden sm:flex items-center gap-10 mt-16 pt-10 border-t border-white/10">
-                    {stats.map((stat, idx) => (
-                      <div key={idx} className="flex items-center gap-4">
-                        <div className="p-3 rounded-xl bg-primary/20 border border-primary/30">
-                          <stat.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <p className="font-[family-name:var(--font-poppins)] font-bold text-2xl text-white">
-                            {stat.value}
-                          </p>
-                          <p className="text-sm text-gray-400">{stat.label}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>

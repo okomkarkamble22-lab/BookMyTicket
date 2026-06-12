@@ -317,11 +317,12 @@ export default function MovieDetailsPage({ currentPath, onNavigate }) {
               <span className="inline-flex items-center rounded-full border border-[#E50914]/50 bg-[#E50914]/20 px-4 py-2 text-sm font-semibold text-white">
                 {movie.status}
               </span>
-              <h1 className="mt-5 font-[family-name:var(--font-poppins)] text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-poppins)] text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {movie.title}
               </h1>
+              <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-[#E50914] to-[#ff5a63]" />
               {movie.tagline ? (
-                <p className="mt-3 text-lg text-white/80 sm:text-xl">{movie.tagline}</p>
+                <p className="mt-4 text-lg text-white/80 sm:text-xl">{movie.tagline}</p>
               ) : null}
 
               <div className="mt-6 flex flex-wrap gap-3">
