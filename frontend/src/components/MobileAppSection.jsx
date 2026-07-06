@@ -1,13 +1,5 @@
 import { Check, Smartphone } from 'lucide-react'
-
-const appFeatures = [
-  'Instant ticket booking',
-  'Exclusive app-only deals',
-  'QR code entry',
-  'Real-time notifications',
-  'Offline ticket access',
-  'Easy refunds & cancellations',
-]
+import { appFeatures } from '../data/homeContent'
 
 export default function MobileAppSection() {
   return (

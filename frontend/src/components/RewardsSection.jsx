@@ -1,31 +1,12 @@
 import { Gift, Star, Users, Zap } from 'lucide-react'
+import { rewardFeatures } from '../data/homeContent'
 
-const rewardFeatures = [
-  {
-    icon: Star,
-    title: 'Earn Points',
-    description: 'Get points on every booking that you can redeem for free tickets',
-    color: 'from-yellow-500',
-  },
-  {
-    icon: Gift,
-    title: 'Exclusive Offers',
-    description: 'Unlock special discounts and early access to premium events',
-    color: 'from-pink-500',
-  },
-  {
-    icon: Users,
-    title: 'Refer & Earn',
-    description: 'Invite friends and both of you get ₹100 off on your next booking',
-    color: 'from-blue-500',
-  },
-  {
-    icon: Zap,
-    title: 'Priority Access',
-    description: 'Be the first to book tickets for the most anticipated shows',
-    color: 'from-green-500',
-  },
-]
+const rewardIcons = {
+  Gift,
+  Star,
+  Users,
+  Zap,
+}
 
 export default function RewardsSection() {
   return (
@@ -50,31 +31,35 @@ export default function RewardsSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {rewardFeatures.map((feature, index) => (
-            <div
-              key={index}
-              className="group relative bg-muted rounded-2xl p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10"
-            >
+          {rewardFeatures.map((feature, index) => {
+            const Icon = rewardIcons[feature.iconName]
+
+            return (
               <div
-                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} to-transparent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                key={index}
+                className="group relative bg-muted rounded-2xl p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10"
               >
-                <feature.icon className="h-7 w-7 text-white" />
+                <div
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} to-transparent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <Icon className="h-7 w-7 text-white" />
+                </div>
+
+                <h3 className="font-[family-name:var(--font-poppins)] font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-
-              <h3 className="font-[family-name:var(--font-poppins)] font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         <div className="text-center">
           <button className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-[family-name:var(--font-poppins)] font-semibold rounded-xl transition-all hover:shadow-xl hover:shadow-primary/30 hover:scale-105">
             Join Rewards Program
-            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+            <span className="inline-block transition-transform group-hover:translate-x-1">â†’</span>
           </button>
         </div>
       </div>

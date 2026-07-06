@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-import { formatGenres, getSliderMovies } from '../data/movies'
+import { formatGenres, getSliderMovies } from '../utils/movies'
 
 const nowShowingMovies = getSliderMovies()
 

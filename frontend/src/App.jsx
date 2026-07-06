@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 import {
   BrowserRouter,
   Navigate,
@@ -11,21 +11,12 @@ import Home from './pages/Home'
 import MovieDetailsPage from './pages/MovieDetailsPage'
 import Movies from './pages/Movies'
 import SimplePage from './pages/SimplePage'
-
-function normalizePath(pathname) {
-  if (!pathname || pathname === '/') {
-    return '/'
-  }
-
-  return pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
-}
+import useScrollToTop from './hooks/useScrollToTop'
+import { normalizePath } from './utils/navigation'
 
 function ScrollToTop() {
   const location = useLocation()
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [location.pathname])
+  useScrollToTop(location.pathname)
 
   return null
 }

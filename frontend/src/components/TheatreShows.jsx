@@ -1,39 +1,5 @@
 import { Calendar, MapPin, Theater } from 'lucide-react'
-
-const theatreShows = [
-  {
-    id: 1,
-    title: 'The Phantom of Opera',
-    venue: 'Yashwantrao Chavan Natyagruha',
-    dates: 'Jul 15-20, 2026',
-    poster: 'https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=600&q=80',
-    type: 'Musical',
-  },
-  {
-    id: 2,
-    title: 'Shakespeare in Love',
-    venue: 'Bal Gandharva Rang Mandir',
-    dates: 'Jul 22-28, 2026',
-    poster: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&q=80',
-    type: 'Drama',
-  },
-  {
-    id: 3,
-    title: 'Comedy Nights Live',
-    venue: 'Tilak Smarak Mandir',
-    dates: 'Aug 1-5, 2026',
-    poster: 'https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=600&q=80',
-    type: 'Comedy',
-  },
-  {
-    id: 4,
-    title: 'Kathak Fusion',
-    venue: 'Ganesh Kala Krida Manch',
-    dates: 'Aug 10-12, 2026',
-    poster: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80',
-    type: 'Dance',
-  },
-]
+import { theatreShows } from '../data/homeContent'
 
 export default function TheatreShows() {
   return (

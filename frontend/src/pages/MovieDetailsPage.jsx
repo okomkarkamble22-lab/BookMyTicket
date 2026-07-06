@@ -10,16 +10,17 @@ import {
   Ticket,
   UserRound,
   Video,
-  X,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SectionHeading from '../components/SectionHeading'
+import TrailerModal from '../components/TrailerModal'
 import {
   formatGenres,
   formatVotes,
   getMovieBySlug,
   getSimilarMovies,
-} from '../data/movies'
+} from '../utils/movies'
 
 function DetailChip({ children }) {
   return (
@@ -42,17 +43,6 @@ function QuickInfoCard({ icon: Icon, label, value }) {
         </div>
       </div>
     </article>
-  )
-}
-
-function SectionHeading({ title, subtitle }) {
-  return (
-    <div className="mb-6">
-      <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-[#E50914] sm:text-3xl">
-        {title}
-      </h2>
-      {subtitle ? <p className="mt-2 text-sm text-gray-600 sm:text-base">{subtitle}</p> : null}
-    </div>
   )
 }
 
@@ -127,57 +117,6 @@ function SimilarMovieCard({ movie, onNavigate }) {
         </div>
       </button>
     </article>
-  )
-}
-
-function TrailerModal({ movie, onClose }) {
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [onClose])
-
-  return (
-    <div
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 px-4 py-8"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${movie.title} trailer`}
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-5xl overflow-hidden rounded-[28px] bg-black shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/25"
-          aria-label="Close trailer"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <div className="aspect-video w-full">
-          <iframe
-            src={movie.trailer.videoUrl}
-            title={`${movie.title} trailer`}
-            className="h-full w-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      </div>
-    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight, Star, TrendingUp } from 'lucide-react'
-import { getTrendingMovies } from '../data/movies'
+import { getTrendingMovies } from '../utils/movies'
 
 const trendingMovies = getTrendingMovies()
 

@@ -1,35 +1,5 @@
 import { Bell, Calendar, Clock } from 'lucide-react'
-
-const comingSoonMovies = [
-  {
-    id: 1,
-    title: 'Galactic Empire',
-    releaseDate: 'July 15, 2026',
-    poster: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&q=80',
-    daysLeft: 41,
-  },
-  {
-    id: 2,
-    title: 'The Last Detective',
-    releaseDate: 'July 28, 2026',
-    poster: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400&q=80',
-    daysLeft: 54,
-  },
-  {
-    id: 3,
-    title: 'Ocean Deep',
-    releaseDate: 'August 5, 2026',
-    poster: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80',
-    daysLeft: 62,
-  },
-  {
-    id: 4,
-    title: 'Rise of Heroes',
-    releaseDate: 'August 20, 2026',
-    poster: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80',
-    daysLeft: 77,
-  },
-]
+import { comingSoonMovies } from '../data/homeContent'
 
 export default function ComingSoon() {
   return (

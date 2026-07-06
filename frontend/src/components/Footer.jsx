@@ -1,4 +1,5 @@
-import { MapPin, Mail, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
+import { footerLinks, socialLinks } from '../data/homeContent'
 
 const FacebookIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -24,33 +25,12 @@ const YoutubeIcon = ({ className }) => (
   </svg>
 )
 
-const footerLinks = {
-  company: [
-    { label: 'About Us', href: '/about' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Press', href: '/press' },
-    { label: 'Contact', href: '/contact' },
-  ],
-  support: [
-    { label: 'Help Center', href: '/help' },
-    { label: 'Refund Policy', href: '/refund' },
-    { label: 'FAQs', href: '/faq' },
-    { label: 'Feedback', href: '/feedback' },
-  ],
-  legal: [
-    { label: 'Terms of Service', href: '/terms' },
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Cookie Policy', href: '/cookies' },
-    { label: 'Disclaimer', href: '/disclaimer' },
-  ],
+const socialIcons = {
+  Facebook: FacebookIcon,
+  Instagram: InstagramIcon,
+  Twitter: TwitterIcon,
+  YouTube: YoutubeIcon,
 }
-
-const socialLinks = [
-  { icon: FacebookIcon, href: '#', label: 'Facebook' },
-  { icon: TwitterIcon, href: '#', label: 'Twitter' },
-  { icon: InstagramIcon, href: '#', label: 'Instagram' },
-  { icon: YoutubeIcon, href: '#', label: 'YouTube' },
-]
 
 export default function Footer() {
   return (
@@ -136,20 +116,24 @@ export default function Footer() {
 
         <div className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} BookMyTicket. All rights reserved.
+            Â© {new Date().getFullYear()} BookMyTicket. All rights reserved.
           </p>
 
           <div className="flex items-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                className="p-2 rounded-lg bg-background hover:bg-primary/10 border border-border hover:border-primary transition-all"
-                aria-label={social.label}
-              >
-                <social.icon className="h-4 w-4 text-muted-foreground hover:text-primary" />
-              </a>
-            ))}
+            {socialLinks.map((social) => {
+              const Icon = socialIcons[social.iconName]
+
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="p-2 rounded-lg bg-background hover:bg-primary/10 border border-border hover:border-primary transition-all"
+                  aria-label={social.label}
+                >
+                  <Icon className="h-4 w-4 text-muted-foreground hover:text-primary" />
+                </a>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -1,15 +1,5 @@
 import { useState } from 'react'
-
-const categories = [
-  { id: 'action', label: 'Action', count: 124 },
-  { id: 'comedy', label: 'Comedy', count: 89 },
-  { id: 'thriller', label: 'Thriller', count: 76 },
-  { id: 'drama', label: 'Drama', count: 156 },
-  { id: 'scifi', label: 'Sci-Fi', count: 52 },
-  { id: 'adventure', label: 'Adventure', count: 67 },
-  { id: 'animation', label: 'Animation', count: 43 },
-  { id: 'horror', label: 'Horror', count: 38 },
-]
+import { categories } from '../data/homeContent'
 
 export default function MovieCategories() {
   const [activeCategory, setActiveCategory] = useState('action')

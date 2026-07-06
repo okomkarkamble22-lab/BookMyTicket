@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import { ChevronDown, Menu, Search, MapPin, X } from 'lucide-react'
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/movies', label: 'Movies' },
-  { href: '/events', label: 'Events' },
-  { href: '/about', label: 'About' },
-  { href: '/bookings', label: 'My Bookings' },
-]
+import { navLinks } from '../data/navigation'
 
 export default function Navbar({ currentPath = '/', onNavigate }) {
   const [isOpen, setIsOpen] = useState(false)
