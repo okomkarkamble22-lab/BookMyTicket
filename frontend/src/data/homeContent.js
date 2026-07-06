@@ -1,5 +1,0 @@
-export { featuredContent } from './homeHeroContent'
-export { categories, genreCards, comingSoonMovies } from './homeBrowseContent'
-export { trendingEvents, theatreShows } from './homeEntertainmentContent'
-export { rewardFeatures, appFeatures } from './homeEngagementContent'
-export { footerLinks, socialLinks } from './homeFooterContent'
